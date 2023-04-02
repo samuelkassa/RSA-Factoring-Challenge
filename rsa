@@ -16,13 +16,13 @@ check_factor()
 			count=$((count + 1))
 		done
 	else
-		num=$3
+		num2=$3
 	fi
 
 	num1=$2
-	num=$(echo $1" | tr ':' '=')
+	num=$(echo "$1" | tr ':' '=')
 
-	result==$(echo "if($num2 > $num1) 1 else 0" | bc)
+	result=$(echo "if($num2 > $num1) 1 else 0" | bc)
 		if ((result == 1)); then
 			numcp=$num1
 			num1=$num2
@@ -32,7 +32,8 @@ check_factor()
 	echo "$num$num1*$num2"
 }
 
-if [ $# -ne 1 ]then
+if [ $# -ne 1 ]
+then
 	echo 'Usage: rsa <file>'
 	exit 1
 else
@@ -40,7 +41,8 @@ else
 	while read i
 	do
 
-		result=$(factor ""i")
+		result=$(factor "$i")
+		check_factor $result
 
 	done < "$1"
 fi

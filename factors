@@ -35,7 +35,7 @@ check_factor()
 
 if [ $# -ne 1 ]
 then
-	echo 'Usage: 'factors' <file>'
+	echo 'Usage: factors <file>'
 	exit 1
 else
 
@@ -47,5 +47,4 @@ else
 		check_factor $result
 
 	done < "$1"
-fi
-	
+fi	
